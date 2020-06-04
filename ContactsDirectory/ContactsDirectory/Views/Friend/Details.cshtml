@@ -1,0 +1,54 @@
+﻿@model ContactsDirectory.Models.PersonViewModel;
+@{
+    ViewData["Title"] = "Friend Details";
+}
+<h1>@ViewData["Title"]</h1>
+<table class="table table-hover"> 
+    <thead>
+        <tr>
+            <th>@Model.Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Address</td>
+            <td>
+                <table id="address" class="table table-bordered table-hover">
+
+                    <tbody>
+                        @foreach (var address in Model.Adresses)
+                        {
+                            <tr>
+                                <td>@address.Locality</td>
+                                <td>@address.State</td>
+                                <td>@address.Country</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>
+                <table id="contacts" class="table table-bordered table-hover">
+
+                    <tbody>
+                        @foreach (var contact in Model.Contacts)
+                        {
+                            <tr>
+                                <td>@contact.Type</td>
+                                <td>@contact.Link</td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </td>
+
+        </tr>
+        </tbody>
+</table>
+
+        

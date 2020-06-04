@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ContactsDirectory.Models.PersonViewModel>
+@{
+    ViewData["Title"] = "Friends";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    @Html.ActionLink("New Friend", "Create", "Friend", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="friends" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Delete</th>
+            <th>Contacts</th>
+            @*<th>Type</th>
+            <th>Link</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var friend in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(friend.Name, "Details", "Friend", new { id = friend.Person_Id }, null)</td>
+                <td>
+                    <table id="contacts" class="table table-bordered table-hover">
+
+                        <tbody>
+                            @foreach (var contact in friend.Contacts)
+                            {
+                                <tr>
+                                    <td>@contact.Type</td>
+                                    <td>@contact.Link</td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </td>
+                <td><button date-customer-id="@friend.Person_Id" class="page-link js-delete">Delete this</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

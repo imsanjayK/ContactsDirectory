@@ -1,0 +1,50 @@
+﻿@model ContactsDirectory.Models.PersonViewModel;
+@{
+    ViewData["Title"] = "New Friend";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@using (Html.BeginForm("Create", "Friend"))
+{
+    @Html.ValidationSummary(false)
+    <div class="form-group">
+        @Html.LabelFor(n => Model.Name)
+        @Html.TextBoxFor(n => Model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => Model.Name)
+    </div>
+    <div id="contactForm" class="form-group">
+        @Html.LabelFor(n => Model.Contacts)
+       
+
+    </div>
+    <button id="addbtn" type="button" class="btn btn-primary">Add</button>
+    @*<div class="form-group">
+        @Html.LabelFor(n => n.Customers.Birthdate)
+        @Html.TextBoxFor(n => n.Customers.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customers.Birthdate)
+    </div>*@
+
+    @Html.HiddenFor(m => Model.Person_Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#addbtn").on("click", function () {
+
+            })
+        });
+
+        @*
+        <button type="button" class="btn btn-primary">Save</button>
+
+
+        @Html.TextBoxFor(n => Model.Contacts, new { @class = "form-control" })*@
+
+
+
+    </script>
+}
